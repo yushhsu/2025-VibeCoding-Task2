@@ -7,6 +7,7 @@
   <title>Alysha — Personal Website</title>
 
   <style>
+    /* CSS:BASE-START */
     :root {
       --bg: #fafafa;
       --text: #222;
@@ -50,39 +51,6 @@
       margin: auto;
     }
 
-    /* ======================
-       高級 Hero 左文右圖
-    ====================== */
-
-    #hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 48px;
-    }
-
-    #hero .hero-text {
-      flex: 1;
-    }
-
-    #hero h1 {
-      font-size: 52px;
-      margin: 0 0 16px;
-      font-weight: 700;
-    }
-
-    #hero p {
-      font-size: 18px;
-      max-width: 480px;
-      opacity: 0.85;
-    }
-
-    .hero-buttons {
-      margin-top: 24px;
-      display: flex;
-      gap: 16px;
-    }
-
     .btn {
       padding: 12px 24px;
       border-radius: 8px;
@@ -112,8 +80,39 @@
       background: var(--primary);
       color: #fff;
     }
+    /* CSS:BASE-END */
 
-    /* 右側圖片區插槽 */
+
+    /* CSS:HERO-START */
+    #hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    #hero .hero-text {
+      flex: 1;
+    }
+
+    #hero h1 {
+      font-size: 52px;
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+
+    #hero p {
+      font-size: 18px;
+      max-width: 480px;
+      opacity: 0.85;
+    }
+
+    .hero-buttons {
+      margin-top: 24px;
+      display: flex;
+      gap: 16px;
+    }
+
     .hero-image-slot {
       flex: 1;
       display: flex;
@@ -129,13 +128,113 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top; /* ⭐ 強制圖片取頂部 */
-    } 
+      object-position: top;
+    }
+    /* CSS:HERO-END */
 
 
-    /* ============
-       RWD
-    ============ */
+    /* CSS:ABOUT-START */
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-text {
+      max-width: 600px;
+    }
+
+    .about-text p {
+      margin-bottom: 16px;
+    }
+
+    .about-list {
+      list-style: disc;
+      padding-left: 20px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .about-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .about-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    /* CSS:ABOUT-END */
+
+
+    /* CSS:SKILLS-START */
+    .skills-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .skills-text {
+      max-width: 600px;
+    }
+
+    .skills-text p {
+      margin-bottom: 16px;
+    }
+
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .skills-list li {
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .tool-comm {
+      background: #ffd966; /* 溝通工具顏色 */
+      color: #222;
+    }
+
+    .tool-prod {
+      background: #6fa8dc; /* 生產力工具顏色 */
+      color: #fff;
+    }
+
+    .skills-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    /* CSS:SKILLS-END */
+
+
+    /* CSS:PROJECTS-START */
+    /* 保留原本或待填 */
+    /* CSS:PROJECTS-END */
+
+    /* CSS:CONTACT-START */
+    /* 保留原本或待填 */
+    /* CSS:CONTACT-END */
+
+
+    /* CSS:RWD-START */
     @media (max-width: 900px) {
       #hero {
         flex-direction: column;
@@ -152,6 +251,38 @@
         height: 280px;
       }
     }
+
+    @media (min-width: 901px) {
+      .about-content {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .about-text {
+        flex: 1;
+      }
+      .about-image {
+        flex: 1;
+      }
+      .about-buttons {
+        justify-content: flex-start;
+      }
+
+      .skills-content {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .skills-text {
+        flex: 1;
+      }
+      .skills-image {
+        flex: 1;
+      }
+    }
+    /* CSS:RWD-END */
   </style>
 </head>
 
@@ -176,31 +307,67 @@
       <h1>Hi, I'm Alysha.</h1>
       <p>這是一段 Hero 用的優雅描述文字。未來你可以放專業定位、角色介紹或一句能代表你的標語。</p>
 
-      <!-- Hero 按鈕插槽 -->
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">查看作品</a>
         <a href="#contact" class="btn btn-outline">與我聯絡</a>
       </div>
     </div>
 
-    <!-- Hero 圖像插槽（可替換成照片/插畫/3D/Lottie） -->
     <div class="hero-image-slot">
-      <!-- 預設灰底，你可自行放入圖片 -->
      <img src="Pingu.png" alt="Alysha" />
     </div>
   </section>
 
-  <!-- About -->
+  <!-- SECTION:ABOUT-START -->
   <section id="about">
-    <h2>About Me</h2>
-    <div class="about-content-slot"></div>
+    <h2>關於我</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>我目前是一名前端工程師，專注於網頁開發與使用者體驗設計，同時熱衷於教學與接案，熟悉 HTML、CSS、JavaScript 及 React。</p>
+        <p>我重視溝通與團隊協作，喜歡把複雜的概念簡單化並清楚地傳達給他人。</p>
+        <ul class="about-list">
+          <li>具備完整網站 UX/UI 設計能力</li>
+          <li>能協助團隊優化流程與前端實作</li>
+          <li>擅長教學與知識傳遞</li>
+        </ul>
+        <div class="about-buttons">
+          <a href="#projects" class="btn btn-primary">查看作品集</a>
+          <a href="#contact" class="btn btn-outline">聯絡我</a>
+        </div>
+      </div>
+      <div class="about-image">
+        <img src="Pingu.png" alt="寫程式的工程師" />
+      </div>
+    </div>
   </section>
+  <!-- SECTION:ABOUT-END -->
 
-  <!-- Skills -->
+  <!-- SECTION:SKILLS-START -->
   <section id="skills">
     <h2>Skills</h2>
-    <div class="skills-list-slot"></div>
+    <div class="skills-content">
+      <div class="skills-text">
+        <p>我主要技能包含前端開發、使用者體驗設計與跨部門溝通。</p>
+        <p>我重視溝通與協作，喜歡把事情講清楚並確保團隊理解一致。</p>
+        <ul class="skills-list">
+          <li class="tool-comm">跨部門溝通</li>
+          <li class="tool-prod">Figma</li>
+          <li class="tool-prod">Notion</li>
+          <li class="tool-prod">Google Suite</li>
+          <li class="tool-prod">Google Gemini & ChatGPT</li>
+          <li class="tool-prod">Jira</li>
+          <li class="tool-prod">Microsoft Teams</li>
+          <li class="tool-prod">HTML</li>
+          <li class="tool-prod">CSS</li>
+          <li class="tool-prod">JavaScript</li>
+        </ul>
+      </div>
+      <div class="skills-image">
+        <img src="Pingu.png" alt="技能示意圖" />
+      </div>
+    </div>
   </section>
+  <!-- SECTION:SKILLS-END -->
 
   <!-- Projects -->
   <section id="projects">
