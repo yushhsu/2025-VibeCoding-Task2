@@ -193,8 +193,10 @@
     .skills-list {
       list-style: none;
       padding: 0;
+      /* 修改：移除 column，改用 row + wrap 製作標籤雲效果 */
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap; 
+      justify-content: center; /* 手機版置中對齊 */
       gap: 8px;
       margin-bottom: 24px;
     }
@@ -204,15 +206,16 @@
       border-radius: 6px;
       display: inline-block;
       font-weight: 500;
+      /* 由於父層是 flex row，這裡寬度會自動適應文字 */
     }
 
     .tool-comm {
-      background: #ffd966; /* 溝通工具顏色 */
+      background: #ffd966;
       color: #222;
     }
 
     .tool-prod {
-      background: #6fa8dc; /* 生產力工具顏色 */
+      background: #6fa8dc;
       color: #fff;
     }
 
@@ -226,7 +229,66 @@
 
 
     /* CSS:PROJECTS-START */
-    /* 保留原本或待填 */
+    .projects-container {
+      display: grid;
+      gap: 40px;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 16px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .project-info {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .project-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      color: var(--text);
+    }
+
+    .project-desc {
+      font-size: 15px;
+      color: #555;
+      margin: 0 0 20px 0;
+    }
+
+    .project-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .project-link:hover {
+      border-bottom-color: var(--primary);
+    }
+
+    .project-img-wrapper {
+      width: 100%;
+      height: 240px;
+      background: #eee;
+    }
+
+    .project-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     /* CSS:PROJECTS-END */
 
     /* CSS:CONTACT-START */
@@ -281,13 +343,38 @@
       .skills-image {
         flex: 1;
       }
+      
+      /* 新增：桌機版 Skills 列表靠左對齊 */
+      .skills-list {
+        justify-content: flex-start;
+      }
+
+      /* Projects RWD Update */
+      .projects-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+
+      .project-card {
+        flex-direction: row; 
+        align-items: stretch;
+      }
+
+      .project-info {
+        flex: 1;
+        padding: 24px;
+      }
+
+      .project-img-wrapper {
+        flex: 1;
+        height: auto;
+      }
     }
     /* CSS:RWD-END */
   </style>
 </head>
 
 <body>
-  <!-- Header -->
   <header class="site-header">
     <div class="logo">Alysha</div>
     <nav>
@@ -299,9 +386,6 @@
     </nav>
   </header>
 
-  <!-- =======================
-       高級 Hero：左文右圖
-  ======================= -->
   <section id="hero">
     <div class="hero-text">
       <h1>Hi, I'm Alysha.</h1>
@@ -317,8 +401,6 @@
      <img src="Pingu.png" alt="Alysha" />
     </div>
   </section>
-
-  <!-- SECTION:ABOUT-START -->
   <section id="about">
     <h2>關於我</h2>
     <div class="about-content">
@@ -336,13 +418,10 @@
         </div>
       </div>
       <div class="about-image">
-        <img src="Pingu.png" alt="寫程式的工程師" />
+        <img src="https://source.unsplash.com/400x400/?programmer,coding" alt="寫程式的工程師" />
       </div>
     </div>
   </section>
-  <!-- SECTION:ABOUT-END -->
-
-  <!-- SECTION:SKILLS-START -->
   <section id="skills">
     <h2>Skills</h2>
     <div class="skills-content">
@@ -367,20 +446,59 @@
       </div>
     </div>
   </section>
-  <!-- SECTION:SKILLS-END -->
+  <section id="projects" class="projects-section">
+    <h2>PROJECTS</h2>
+    
+    <div class="projects-container">
+      <article class="project-card">
+        <div class="project-info">
+          <h3 class="project-title">Project Title 01</h3>
+          <p class="project-desc">我的專案的簡介。這裡可以簡述專案目標、使用的技術或解決的問題。</p>
+          <a href="#" class="project-link">Learn more &rarr;</a>
+        </div>
+        <div class="project-img-wrapper">
+          <img src="Pingu.png" alt="Project 01 Preview">
+        </div>
+      </article>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid-slot"></div>
+      <article class="project-card">
+        <div class="project-info">
+          <h3 class="project-title">Project Title 02</h3>
+          <p class="project-desc">我的專案的簡介。這是一個響應式網頁設計的案例展示。</p>
+          <a href="#" class="project-link">Learn more &rarr;</a>
+        </div>
+        <div class="project-img-wrapper">
+          <img src="Pingu.png" alt="Project 02 Preview">
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-info">
+          <h3 class="project-title">Project Title 03</h3>
+          <p class="project-desc">我的專案的簡介。使用者體驗研究與介面優化的成果。</p>
+          <a href="#" class="project-link">Learn more &rarr;</a>
+        </div>
+        <div class="project-img-wrapper">
+          <img src="Pingu.png" alt="Project 03 Preview">
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-info">
+          <h3 class="project-title">Project Title 04</h3>
+          <p class="project-desc">我的專案的簡介。前端互動特效與 API 串接實作。</p>
+          <a href="#" class="project-link">Learn more &rarr;</a>
+        </div>
+        <div class="project-img-wrapper">
+          <img src="Pingu.png" alt="Project 04 Preview">
+        </div>
+      </article>
+    </div>
   </section>
-
-  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
     <div class="contact-slot"></div>
   </section>
-
   <footer style="padding: 32px; text-align: center; opacity: 0.7;">
     © 2025 Alysha — All rights reserved.
   </footer>
