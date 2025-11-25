@@ -336,20 +336,18 @@
       min-height: 120px;
     }
 
-    /* 按鈕容器：讓按鈕依據內容縮放 */
     .btn-submit-wrapper {
       display: flex;
       justify-content: flex-start;
     }
 
     .btn-submit {
-      position: relative; /* 為了定位 toast */
+      position: relative;
       border: none;
       font-size: 16px;
-      width: fit-content; /* 寬度適應文字 */
+      width: fit-content;
     }
 
-    /* CSS-Only Toast 模擬 */
     .toast-message {
       position: fixed;
       bottom: 30px;
@@ -362,19 +360,12 @@
       font-size: 14px;
       pointer-events: none;
       opacity: 0;
-      
-      /* 關鍵技巧：
-         1. 預設 opacity: 0
-         2. transition 設為 0.5s fade-out，並延遲 2s 發生 (讓訊息停留)
-      */
       transition: opacity 0.5s ease 2s, transform 0.5s ease 2s;
     }
 
-    /* 當按鈕被按下 (Active) 時 */
     .btn-submit:active .toast-message {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
-      /* 按下時立即顯示，不延遲 */
       transition: none;
     }
     /* CSS:CONTACT-END */
@@ -537,7 +528,7 @@
         <div class="project-info">
           <h3 class="project-title">Project Title 01</h3>
           <p class="project-desc">我的專案的簡介。這裡可以簡述專案目標、使用的技術或解決的問題。</p>
-          <a href="#" class="project-link">Learn more &rarr;</a>
+          <a href="https://example.com" class="project-link">Learn more &rarr;</a>
         </div>
         <div class="project-img-wrapper">
           <img src="Pingu.png" alt="Project 01 Preview">
@@ -548,7 +539,7 @@
         <div class="project-info">
           <h3 class="project-title">Project Title 02</h3>
           <p class="project-desc">我的專案的簡介。這是一個響應式網頁設計的案例展示。</p>
-          <a href="#" class="project-link">Learn more &rarr;</a>
+          <a href="https://example.com" class="project-link">Learn more &rarr;</a>
         </div>
         <div class="project-img-wrapper">
           <img src="Pingu.png" alt="Project 02 Preview">
@@ -559,7 +550,7 @@
         <div class="project-info">
           <h3 class="project-title">Project Title 03</h3>
           <p class="project-desc">我的專案的簡介。使用者體驗研究與介面優化的成果。</p>
-          <a href="#" class="project-link">Learn more &rarr;</a>
+          <a href="https://example.com" class="project-link">Learn more &rarr;</a>
         </div>
         <div class="project-img-wrapper">
           <img src="Pingu.png" alt="Project 03 Preview">
@@ -570,7 +561,7 @@
         <div class="project-info">
           <h3 class="project-title">Project Title 04</h3>
           <p class="project-desc">我的專案的簡介。前端互動特效與 API 串接實作。</p>
-          <a href="#" class="project-link">Learn more &rarr;</a>
+          <a href="https://example.com" class="project-link">Learn more &rarr;</a>
         </div>
         <div class="project-img-wrapper">
           <img src="Pingu.png" alt="Project 04 Preview">
